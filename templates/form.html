@@ -263,8 +263,6 @@
               </div>
             </form>
 
-            
-
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -536,6 +534,7 @@
                 method="post"
                 action="form.html"
                 enctype="multipart/form-data"
+                class="uform"
               >
                 {% csrf_token %}
                 <div class="mb-3">
@@ -565,15 +564,17 @@
                   <input
                     type="phone"
                     class="form-control form-control-user"
-                    name="phone"
-                    id="phone"
+                    name="phone1"
+                    id="phone1"
                     placeholder="Write Your Phone Number"
                   />
                 </div>
                 <div class="mb-3 mt-3">
-                  <input type="file" id="file" name="file" />
+                  <input type="file" id="file1" name="file1" accept=".md" />
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" id="submit" class="btn btn-primary">
+                  Submit
+                </button>
               </form>
             </div>
           </div>
@@ -654,5 +655,42 @@
     <!-- Page level custom scripts -->
     <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
     <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        console.log("hi");
+        $("#submit").click(function () {
+          console.log("button submiitted");
+          var name = $(".uform #name").val();
+          var email = $(".uform #email").val();
+          var phone1 = $(".uform #phone1").val();
+          var file1 = $(".uform #file1").val();
+
+          var data = new FormData();
+          data.append("csrfmiddlewaretoken", "{{ csrf_token }}");
+          data.append("name", name);
+          data.append("email", email);
+          data.append("phone1", phone1);
+          data.append("file1", $("#file1")[0].files[0]);
+
+          console.log(name);
+          console.log(email);
+          console.log(phone1);
+          console.log(file1);
+
+          $.ajax({
+            url: "{% url 'form' %}",
+            method: "POST",
+            processData: false,
+            contentType: false,
+            mimeType: "multipart/form-data",
+            data: data,
+
+            success: function (data) {
+              console.log("Data sent");
+            },
+          });
+        });
+      });
+    </script>
   </body>
 </html>

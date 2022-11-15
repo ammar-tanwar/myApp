@@ -1,7 +1,5 @@
-from datetime import datetime
 from django.shortcuts import render, HttpResponse
 from myAppAdmin.models import Contact
-from django.contrib import messages
 # Create your views here.
 
 
@@ -12,16 +10,18 @@ def register(request):
     return render(request, 'register.html')
 
 def form(request):
-    if request.method == "POST":
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone')
-        file = request.POST.get('file')
-        contact = Contact(name=name, email=email, phone=phone, file=file, date=datetime.today())
+    if request.is_ajax() and request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        phone1 = request.POST.get("phone1")
+        file1 = request.FILES
+        file2 = file1.get('file1')
+        print('First Name is', name, email, phone1, file2)
+        contact = Contact.objects.create(name=name, email=email, phone=phone1, file1= file2)
         contact.save()
-        messages.success(request, 'Profile details updated!')
     return render(request, 'form.html')
-    
+
+
 def charts(request):
     return render(request, 'charts.html')
 
