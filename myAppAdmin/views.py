@@ -10,7 +10,7 @@ def register(request):
     return render(request, 'register.html')
 
 def form(request):
-    if request.is_ajax() and request.method == "POST":
+    if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email")
         phone1 = request.POST.get("phone1")

@@ -129,10 +129,10 @@ STATICFILES_DIRS = [
 ]
 
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'AKIATXEEHZDUXPKCRGMH'
-AWS_SECRET_ACCESS_KEY = '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'
-# Depending on the AWS account used, you might also need to declare AWS_SESSION_TOKEN as an environment variable
+# AWS_ACCESS_KEY_ID = 'AKIATXEEHZDUXPKCRGMH'
+# AWS_SECRET_ACCESS_KEY = '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'
+# # Depending on the AWS account used, you might also need to declare AWS_SESSION_TOKEN as an environment variable
 
-AWS_STORAGE_BUCKET_NAME = 'ammar-practice'
+# AWS_STORAGE_BUCKET_NAME = 'ammar-practice'
