@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -120,19 +121,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-#added Manually
-
-
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR, 'static')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# AWS_ACCESS_KEY_ID = 'AKIATXEEHZDUXPKCRGMH'
-# AWS_SECRET_ACCESS_KEY = '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'
-# # Depending on the AWS account used, you might also need to declare AWS_SESSION_TOKEN as an environment variable
-
-# AWS_STORAGE_BUCKET_NAME = 'ammar-practice'
+AWS_ACCESS_KEY_ID = 'AKIATXEEHZDUWJ6DHHUD'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'tutorlms-courses'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = 'ap-south-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERIFY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

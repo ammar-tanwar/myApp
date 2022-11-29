@@ -1,14 +1,14 @@
 from django.urls import path
-from . import views 
+from .views import allformfunc 
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('register.html', views.register, name='register'),
-    path('login.html', views.register, name='register'),
-    path('404.html', views.error, name='error'),
-    path('forgot-password.html', views.forgot, name='forgot'),
-    path('blank.html', views.blank, name='blank'),
-    path('index.html', views.index, name='index'),
-    path('form.html', views.form, name='form'),
-    path('charts.html', views.charts, name='charts'),
+    path('', allformfunc.index, name='index'),
+    path('register.html', allformfunc.register, name='register'),
+    path('login.html', allformfunc.register, name='register'),
+    path('404.html', allformfunc.error, name='error'),
+    path('forgot-password.html', allformfunc.forgot, name='forgot'),
+    path('blank.html', allformfunc.blank, name='blank'),
+    path('index.html', allformfunc.index, name='index'),
+    path('form.html', allformfunc.form, name='form'),
+    path('charts.html', allformfunc.charts, name='charts'),
 ]
